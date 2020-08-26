@@ -16,9 +16,9 @@ G_symmetric.add_edge('Michelle', 'Marc')
 G_symmetric.add_edge('George', 'John')
 G_symmetric.add_edge('George', 'Steven')
 
-# print(nx.info(G_symmetric))
-# plt.figure(figsize=(5,5))
-# nx.draw_networkx(G_symmetric)
+print(nx.info(G_symmetric))
+plt.figure(figsize=(5,5))
+nx.draw_networkx(G_symmetric)
 # plt.show()
 
 # ----Asymmetric networks
@@ -30,8 +30,8 @@ G_asymmetric.add_edge('A', 'D')
 G_asymmetric.add_edge('C', 'A')
 G_asymmetric.add_edge('D', 'E')
 
-# nx.spring_layout(G_asymmetric)
-# nx.draw_networkx(G_asymmetric)
+nx.spring_layout(G_asymmetric)
+nx.draw_networkx(G_asymmetric)
 # plt.show()
 
 
@@ -51,44 +51,44 @@ G_weighted.add_edge('George',  'Steven',  weight=4)
 elarge = [(u, v) for (u, v, d) in G_weighted.edges(data=True) if d['weight'] > 8]
 esmall = [(u, v) for (u, v, d) in G_weighted.edges(data=True) if d['weight'] <= 8]
 
-# pos = nx.circular_layout(G_weighted)  # positions for all nodes
-#
-# nx.draw_networkx_edges(G_weighted, pos, edgelist=elarge,width=6)
-# nx.draw_networkx_edges(G_weighted, pos, edgelist=esmall,width=6, alpha=0.5, edge_color='b', style='dashed')
-#
-# nx.draw_networkx_labels(G_weighted, pos, font_size=20, font_family='sans-serif')
+pos = nx.circular_layout(G_weighted)  # positions for all nodes
 
-# plt.axis('off')
+nx.draw_networkx_edges(G_weighted, pos, edgelist=elarge,width=6)
+nx.draw_networkx_edges(G_weighted, pos, edgelist=esmall,width=6, alpha=0.5, edge_color='b', style='dashed')
+
+nx.draw_networkx_labels(G_weighted, pos, font_size=20, font_family='sans-serif')
+
+plt.axis('off')
 # plt.show()
 
 
 # ---- Clustering Coefficient
 
-# print(nx.clustering(G_symmetric,'Michelle'))
-# print(nx.clustering(G_symmetric,'Laura'))
-# print(nx.average_clustering(G_symmetric))
-
-# ---- Network Distance Measures
-# print(nx.degree(G_symmetric, 'Michelle')) # Degree i.e. number of connections
+print(nx.clustering(G_symmetric,'Michelle'))
+print(nx.clustering(G_symmetric,'Laura'))
+print(nx.average_clustering(G_symmetric))
 #
-# print(nx.shortest_path(G_symmetric, 'Michelle', 'John')) # shortest path
-# print(nx.shortest_path_length(G_symmetric, 'Michelle', 'John')) # shortest path length
+# ---- Network Distance Measures
+print(nx.degree(G_symmetric, 'Michelle')) # Degree i.e. number of connections
 
-# S = nx.bfs_tree(G_symmetric, 'Steven')  # breadth first search, reach whole network through single node
-# nx.draw_networkx(S)
+print(nx.shortest_path(G_symmetric, 'Michelle', 'John'))  # shortest path
+print(nx.shortest_path_length(G_symmetric, 'Michelle', 'John'))  # shortest path length
 
-# M = nx.bfs_tree(G_symmetric, 'Michelle')
-# nx.draw_networkx(M)
+S = nx.bfs_tree(G_symmetric, 'Steven')  # breadth first search, reach whole network through single node
+nx.draw_networkx(S)
+#
+M = nx.bfs_tree(G_symmetric, 'Michelle')
+nx.draw_networkx(M)
 # plt.show()
 
-# print(nx.eccentricity(G_symmetric, 'Michelle')) # largest distance between A and all other nodes
-# print(nx.eccentricity(G_symmetric, 'Steven'))
+print(nx.eccentricity(G_symmetric, 'Michelle')) # largest distance between A and all other nodes
+print(nx.eccentricity(G_symmetric, 'Steven'))
 
 # ---- Centrality Measures (most important nodes in the network)
 
 # Degree centrality (measure of the number of connections each node has within the network)
 
-# print(nx.degree_centrality(G_symmetric))
+print(nx.degree_centrality(G_symmetric))
 
 # Eigenvector Centrality (how well are the nodes connected to other important nodes)
 print(nx.eigenvector_centrality(G_symmetric))
@@ -97,7 +97,7 @@ print(nx.eigenvector_centrality(G_symmetric))
 print(nx.closeness_centrality(G_symmetric))
 
 # Betweenness centrality
-#print(nx.betweenness_centrality(G_symmetric))
+print(nx.betweenness_centrality(G_symmetric))
 pos = nx.spring_layout(G_symmetric)
 betCent = nx.betweenness_centrality(G_symmetric, normalized=True, endpoints=True)
 
