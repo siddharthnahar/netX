@@ -1,2 +1,2 @@
 # NetX
-Network Analysis using the NetworkX library 
+Playing around with the NetworkX python library
